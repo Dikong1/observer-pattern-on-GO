@@ -1,10 +1,13 @@
 package main
 
+import "fmt"
+
 func main() {
 
 	construction := newBuilding("ЖК Юрта")
-	err1 := construction.updateAvailability("projected") // handling exception if another status name is entered
+	err1 := construction.updateAvailability("projectedd") // handling exception if another status name is entered
 	if err1 != nil {
+		fmt.Println(err1)
 		return
 	}
 
@@ -18,6 +21,7 @@ func main() {
 
 	err2 := construction.updateAvailability("inProcess")
 	if err2 != nil {
+		fmt.Println(err2)
 		return
 	}
 
@@ -25,6 +29,7 @@ func main() {
 
 	err3 := construction.updateAvailability("ready")
 	if err3 != nil {
+		fmt.Println(err3)
 		return
 	}
 

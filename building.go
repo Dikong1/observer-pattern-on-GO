@@ -21,6 +21,7 @@ func (b *Building) updateAvailability(status string) error {
 	if status != "ready" && status != "inProcess" && status != "projected" {
 		return errors.New("non-existing status, choose one of three [ready, inProcess, projected]")
 	}
+
 	fmt.Printf("\nBuilding %s updated status to %s\n", b.name, status)
 	b.status = status
 	b.notifyAll()
@@ -39,7 +40,7 @@ func (b *Building) unsign(o Observer) {
 }
 
 func (b *Building) notifyAll() {
-	wg := sync.WaitGroup{} //adding waitGroup to run concurrency
+	wg := sync.WaitGroup{} //adding waitGroup to run concurrencya
 	for _, observer := range b.observerList {
 		wg.Add(1)
 		go observer.update(b.name, b.status, &wg)
