@@ -39,7 +39,7 @@ func (b *Building) unsign(o Observer) {
 }
 
 func (b *Building) notifyAll() {
-	wg := sync.WaitGroup{}
+	wg := sync.WaitGroup{} //adding waitGroup to run concurrency
 	for _, observer := range b.observerList {
 		wg.Add(1)
 		go observer.update(b.name, b.status, &wg)
