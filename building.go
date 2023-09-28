@@ -3,6 +3,7 @@ package main
 import (
 	"errors"
 	"fmt"
+	"sync"
 )
 
 type Building struct {
@@ -38,7 +39,10 @@ func (b *Building) unsign(o Observer) {
 }
 
 func (b *Building) notifyAll() {
+	wg := sync.WaitGroup{}
 	for _, observer := range b.observerList {
-		observer.update(b.name, b.status)
+		wg.Add(1)
+		go observer.update(b.name, b.status, &wg)
 	}
+	wg.Wait()
 }
