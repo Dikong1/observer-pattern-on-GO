@@ -5,7 +5,7 @@ import "fmt"
 func main() {
 
 	construction := newBuilding("ЖК Юрта")
-	err1 := construction.updateAvailability("projectedd") // handling exception if another status name is entered
+	err1 := construction.updateAvailability("projected") // handling exception if another status name is entered
 	if err1 != nil {
 		fmt.Println(err1)
 		return
